@@ -23,10 +23,15 @@ int main(int argc, char** argv)
         break;
     }
     if (fpin == NULL)
+    {
+        fprintf(stderr, "Not able to acces input file %s", argv[1]);
         exit(-1);
+    }
     if (fpout == NULL)
+    {
+        fprintf(stderr, "Not able to write to file %s", argv[2]);
         exit(-2);
-    
+    }
 
     fclose(fpin);
     fclose(fpout);
