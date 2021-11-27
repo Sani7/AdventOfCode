@@ -12,6 +12,7 @@ int main(int argc, char** argv)
     {
     case 1:
         fpin = fopen("test", "r");
+        fpout = stdout;
         break;
     case 3:
         fpout = fopen(argv[2], "w");
@@ -21,9 +22,13 @@ int main(int argc, char** argv)
     default:
         break;
     }
-
+    if (fpin == NULL)
+        exit(-1);
+    if (fpout == NULL)
+        exit(-2);
     
 
-
+    fclose(fpin);
+    fclose(fpout);
     return 0;
 }
