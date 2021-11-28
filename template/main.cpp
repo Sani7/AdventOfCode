@@ -38,6 +38,8 @@ int main(int argc, char** argv)
         exit(-2);
     }
 
+    
+
     fclose(fpin);
     fclose(fpout);
     return 0;
