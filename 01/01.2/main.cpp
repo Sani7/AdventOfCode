@@ -39,7 +39,7 @@ int main(int argc, char **argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-    int len = calcFileLenght(fpin), increase = 0;
+    int len = calcFileLength(fpin), increase = 0;
     int *numArray = (int *)malloc(len * sizeof(int));
     char tmp[10];
     fseek(fpin, 0, SEEK_SET);
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
         }
     }
 
-    fprintf(fpout, "%d\n", increase);
+    fprintf(fpout, "Answer: %d\n", increase);
 
     free(numArray);
     fclose(fpin);
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-int calcFileLenght(FILE *fp)
+int calcFileLength(FILE *fp)
 {
     char buff[BUFSIZ];
     int ret = 0;

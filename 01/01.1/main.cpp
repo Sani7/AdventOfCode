@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 
     }
 
-    fprintf(fpout, "%d\n", increase);
+    fprintf(fpout, "Answer: %d\n", increase);
     
     free(numArray);
     fclose(fpin);
