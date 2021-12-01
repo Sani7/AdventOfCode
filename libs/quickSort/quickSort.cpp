@@ -1,4 +1,4 @@
-#include "quickSort.h"
+#include "quickSort.hpp"
 
 //#define DEBUG
 
