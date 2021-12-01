@@ -41,12 +41,10 @@ int main(int argc, char **argv)
     }
     int len = calcFileLength(fpin), increase = 0;
     int *numArray = (int *)malloc(len * sizeof(int));
-    char tmp[10];
     fseek(fpin, 0, SEEK_SET);
     for (int i = 0; i < len; i++)
     {
-        fscanf(fpin, "%s", tmp);
-        numArray[i] = atoi(tmp);
+        fscanf(fpin, "%d", &numArray[i]);
     }
 
     for (int i = 0; i < len; i++)

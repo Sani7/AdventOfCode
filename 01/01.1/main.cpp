@@ -41,12 +41,10 @@ int main(int argc, char** argv)
     }
     int len = calcFileLength(fpin), increase = 0;
     int *numArray = (int*)malloc(len * sizeof(int));
-    char tmp[10];
     fseek(fpin, 0, SEEK_SET);
     for (int i = 0; i < len; i++)
     {
-        fscanf(fpin, "%s", tmp);
-        numArray[i] = atoi(tmp);
+        fscanf(fpin, "%d", &numArray[i]);
     }
     fprintf(fpout, "%d (N/A - no previous measurement)\n", numArray[0]);
     for (int i = 1; i < len; i++)
