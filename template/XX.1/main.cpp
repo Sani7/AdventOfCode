@@ -1,9 +1,8 @@
 #include "main.hpp"
 
-FILE* fpin, * fpout;
-
 int main(int argc, char** argv)
 {
+    FILE* fpin, * fpout;
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
      * when argc is 1 then no arguments passed, 2 is one arg and so on
@@ -41,6 +40,23 @@ int main(int argc, char** argv)
     
 
     fclose(fpin);
-    fclose(fpout);
+    if (argc > 2)
+        fclose(fpout);
     return 0;
+}
+
+int calcFileLength(FILE* fp)
+{
+    char buff[BUFSIZ];
+    int ret = 0;
+    char* tmp;
+
+    fseek(fp, 0, SEEK_SET);
+    tmp = fgets(buff, BUFSIZ, fp);
+    while(tmp != NULL)
+    {
+        ret++;
+        tmp = fgets(buff, BUFSIZ, fp);
+    }
+    return ret;
 }
