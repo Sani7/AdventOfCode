@@ -1,9 +1,8 @@
 #include "main.hpp"
 
-FILE* fpin, * fpout;
-
 int main(int argc, char** argv)
 {
+    FILE* fpin, * fpout;
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
      * when argc is 1 then no arguments passed, 2 is one arg and so on
@@ -40,7 +39,7 @@ int main(int argc, char** argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-    int len = calcLenght(fpin), increase = 0;
+    int len = calcFileLength(fpin), increase = 0;
     int *numArray = (int*)malloc(len * sizeof(int));
     char tmp[10];
     fseek(fpin, 0, SEEK_SET);
@@ -73,7 +72,7 @@ int main(int argc, char** argv)
     return 0;
 }
 
-int calcLenght(FILE* fp)
+int calcFileLength(FILE* fp)
 {
     char buff[BUFSIZ];
     int ret = 0;

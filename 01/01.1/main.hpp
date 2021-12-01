@@ -5,6 +5,6 @@
 #include <time.h>
 #include <ctype.h>
 
-#include "../libs/quickSort/quickSort.hpp"
+#include "../../libs/quickSort/quickSort.hpp"
 
-int calcLenght(FILE* fp);
+int calcFileLength(FILE* fp);

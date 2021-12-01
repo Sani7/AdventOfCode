@@ -7,4 +7,4 @@
 
 #include "../../libs/quickSort/quickSort.hpp"
 
-int calcLenght(FILE* fp);
+int calcFileLength(FILE* fp);
