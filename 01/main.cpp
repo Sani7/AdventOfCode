@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     switch (argc)
     {
     case 1:
-        fpin = fopen("test", "r");
+        fpin = fopen("input", "r");
         fpout = stdout;
         break;
     case 3:
@@ -21,8 +21,11 @@ int main(int argc, char** argv)
             fprintf(stderr, "Not able to write to file %s\n", argv[2]);
             exit(-2);
         }
+        fpin = fopen(argv[1], "r");
+        break;
     case 2:
         fpin = fopen(argv[1], "r");
+        fpout = stdout;
         break;
     default:
         break;
@@ -37,12 +40,36 @@ int main(int argc, char** argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-   
+    int len = calcLenght(fpin), increase = 0;
+    int *numArray = (int*)malloc(len * sizeof(int));
+    char tmp[10];
+    fseek(fpin, 0, SEEK_SET);
+    for (int i = 0; i < len; i++)
+    {
+        fscanf(fpin, "%s", tmp);
+        numArray[i] = atoi(tmp);
+    }
+    fprintf(fpout, "%d (N/A - no previous measurement)\n", numArray[0]);
+    for (int i = 1; i < len; i++)
+    {
+        if (numArray[i-1] < numArray[i])
+        {
+            fprintf(fpout, "%d (increased)\n", numArray[i]);
+            increase++;
+        }
+        else
+        {
+            fprintf(fpout, "%d (decreased)\n", numArray[i]);
+        }
 
-    printf("%d", calcLenght(fpin));
+    }
 
+    fprintf(fpout, "%d\n", increase);
+    
+    free(numArray);
     fclose(fpin);
-    fclose(fpout);
+    if (argc > 2)
+        fclose(fpout);
     return 0;
 }
 
