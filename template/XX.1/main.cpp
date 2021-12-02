@@ -10,13 +10,21 @@ int main(int argc, char** argv)
     switch (argc)
     {
     case 1:
-        fpin = fopen("test", "r");
+        fpin = fopen("input", "r");
         fpout = stdout;
         break;
     case 3:
         fpout = fopen(argv[2], "w");
+        if (fpout == NULL)
+        {
+            fprintf(stderr, "Not able to write to file %s\n", argv[2]);
+            exit(-2);
+        }
+        fpin = fopen(argv[1], "r");
+        break;
     case 2:
         fpin = fopen(argv[1], "r");
+        fpout = stdout;
         break;
     default:
         break;
@@ -30,11 +38,6 @@ int main(int argc, char** argv)
     {
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
-    }
-    if (fpout == NULL)
-    {
-        fprintf(stderr, "Not able to write to file %s\n", argv[2]);
-        exit(-2);
     }
 
     
