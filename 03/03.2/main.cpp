@@ -47,10 +47,7 @@ int main(int argc, char** argv)
     
     readFile(fpin, numArray, len);
     //fprintf(fpout, "mcb: %d", mostCommonBit(numArray, len, 5, 1));
-
-    clearNum(numArray, len, !mostCommonBit(numArray, len, 11 - 6, 1), 11 - 6);
-
-    /*
+    
     for (int i = 0; i < 12; i++)
     {
         clearNum(numArray, len, !mostCommonBit(numArray, len, 11 - i, 1), 11 - i);
@@ -67,7 +64,7 @@ int main(int argc, char** argv)
     res2 = printNum(numArray, len);
 
     fprintf(fpout, "res1: %d, res2: %d\nRES: %d", res1, res2, res1 * res2);
-    */
+
     free(numArray);
     fclose(fpin);
     if (argc > 2)
@@ -131,9 +128,13 @@ int mostCommonBit(int* num, int len, int bit, int which)
     fprintf(fpout, "zero: %d, one: %d\n", zero, one);
     if (zero < one && which)
         return 1;
+    else if (zero == one && which)
+        return 1;
     else if (which)
         return 0;
     if (zero > one)
+        return 1;
+    else if (zero == one)
         return 1;
     return 0;
 }
@@ -142,7 +143,7 @@ void clearNum(int* num, int len, int state, int bit)
 {
     for (int i = 0; i < len; i++)
     {
-        if (((num[i] >> bit) & 0b1 == state) && num[i] != -1)
+        if (((num[i] >> bit & 0b1) == state) && num[i] != -1)
             {
                 num[i] = -1;
                 fprintf(fpout, "%d is set to -1\n", i);
@@ -153,8 +154,12 @@ void clearNum(int* num, int len, int state, int bit)
 int printNum(int* num, int len)
 {
     for (int i = 0; i < len; i++)
+    
         if (num[i] != -1)
+        {
+            fprintf(fpout, "ret: %d\n", num[i]);
             return num[i];
+        }
     return -1;
 }
 
