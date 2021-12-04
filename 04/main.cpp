@@ -48,11 +48,13 @@ int main(int argc, char **argv)
 
     unsigned int i = 0;
     unsigned char a;
+    // Get numbers drawn
     if (fscanf(fpin, "%hhu", &a) == 1)
         draw[i++] = a;  // first number drawn
     while (i < DRAW && fscanf(fpin, ",%hhu", &a) == 1)
         draw[i++] = a;  // 99 more numbers drawn with a comma separator
-
+    
+    // Get Cards
     unsigned char b = 0, r = 0, c = 0;
     Index *p, *q;
     while (b < CARD && fscanf(fpin, " %hhu", &a) == 1) {
@@ -79,8 +81,6 @@ int main(int argc, char **argv)
             }
         }
     }
-
-    fclose(fpin);
 
     unsigned char wins = 0;   // total number of cards that won
     bool won[CARD] = {false};
@@ -121,7 +121,8 @@ int main(int argc, char **argv)
             p = q;
         }
     }
-
+    
+    fclose(fpin);
     if (argc > 2)
         fclose(fpout);
     return 0;
