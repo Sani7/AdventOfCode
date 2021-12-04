@@ -50,15 +50,17 @@ int main(int argc, char** argv)
     
     for (int i = 0; i < 12; i++)
     {
-        clearNum(numArray, len, !mostCommonBit(numArray, len, 11 - i, 1), 11 - i);
+        clearNum(numArray, len, !mostCommonBit(numArray, len, 11 - i), 11 - i);
     }
     int res1 = printNum(numArray, len), res2;
     
+    fprintf(fpout, "----------------------------------------\n");
+
     readFile(fpin, numArray, len);
 
     for (int i = 0; i < 12; i++)
     {
-        clearNum(numArray, len, mostCommonBit(numArray, len, 11 - i, 0), 11 - i);
+        clearNum(numArray, len, mostCommonBit(numArray, len, 11 - i), 11 - i);
     }
 
     res2 = printNum(numArray, len);
@@ -103,7 +105,7 @@ int strToInt(char * str)
 {
     int i = 0, res = 0;
 
-    while (str[i] != '\0')
+    while (str[i] != '\0' && str[i] != '\n')
     {
         res = res << 1;
         if (str[i] == '1')
@@ -113,7 +115,7 @@ int strToInt(char * str)
     return res;
 }
 
-int mostCommonBit(int* num, int len, int bit, int which)
+int mostCommonBit(int* num, int len, int bit)
 {
     int zero = 0, one = 0;
     for (int i = 0; i < len; i++)
@@ -126,15 +128,13 @@ int mostCommonBit(int* num, int len, int bit, int which)
             zero++;
     }
     fprintf(fpout, "zero: %d, one: %d\n", zero, one);
-    if (zero < one && which)
-        return 1;
-    else if (zero == one && which)
-        return 1;
-    else if (which)
+    if (one == 1 && zero == 0)
         return 0;
-    if (zero > one)
+    if (zero == 1 && one == 0)
+    return 1;
+    if (zero < one)
         return 1;
-    else if (zero == one)
+    if (zero == one)
         return 1;
     return 0;
 }
