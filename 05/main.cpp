@@ -45,6 +45,10 @@ int main(int argc, char** argv)
 
     int i = 0, x0, y0, x1, y1, dx, dy;
     while (i < LINES && fscanf(fpin, "%d,%d -> %d,%d ", &x0, &y0, &x1, &y1) == 4) {
+        // If x0 is smaller then x1 => iterate form x0 -> x1
+        // If x0 equals x1 then do nothing with x0 or x1
+        // If x0 is greater then x1 => iterate form x1 <- x0
+        // Same for y0 and y1
         dx = x0 < x1 ? 1 : (x0 > x1 ? -1 : 0);
         dy = y0 < y1 ? 1 : (y0 > y1 ? -1 : 0);
         line[i++] = (Line){x0, y0, x1, y1, dx, dy, dx && dy};
