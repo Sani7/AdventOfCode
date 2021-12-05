@@ -57,6 +57,7 @@ int main(int argc, char** argv)
         // Same for y0 and y1
         dx = x0 < x1 ? 1 : (x0 > x1 ? -1 : 0);
         dy = y0 < y1 ? 1 : (y0 > y1 ? -1 : 0);
+        // Store the data in the line array of structs (dx && dy calculates if it is a diagonal)
         line[i++] = (Line){x0, y0, x1, y1, dx, dy, dx && dy};
     }
     if (i != lines)
