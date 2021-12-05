@@ -22,4 +22,5 @@ typedef struct {
     bool diag;
 } Line;
 
-int multivent(bool diag, Line* line, int vent[][DIM]);
+int calcFileLength(FILE* fp);
+int multivent(bool diag, Line* line, int lines, int vent[][DIM]);

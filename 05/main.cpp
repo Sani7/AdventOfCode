@@ -39,12 +39,16 @@ int main(int argc, char** argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-
-    Line line[LINES] = {0};
+    int lines = calcFileLength(fpin);
+    fprintf(fpout, "lines: %d\n", lines);
+    Line* line = (Line*)calloc(lines, sizeof(Line));
+    //Line line[LINES] = {0};
     int vent[DIM][DIM] = {0};
 
+    fseek(fpin, 0, SEEK_SET);
+
     int i = 0, x0, y0, x1, y1, dx, dy;
-    while (i < LINES && fscanf(fpin, "%d,%d -> %d,%d ", &x0, &y0, &x1, &y1) == 4) {
+    while (i < lines && fscanf(fpin, "%d,%d -> %d,%d ", &x0, &y0, &x1, &y1) == 4) {
         // If x0 is smaller then x1 => iterate form x0 -> x1 (dx = 1)
         // If x0 equals x1 then do nothing with x0 or x1 (dx = 0)
         // If x0 is greater then x1 => iterate form x1 <- x0 (dx = -1)
@@ -53,22 +57,38 @@ int main(int argc, char** argv)
         dy = y0 < y1 ? 1 : (y0 > y1 ? -1 : 0);
         line[i++] = (Line){x0, y0, x1, y1, dx, dy, dx && dy};
     }
-    if (i != LINES)
+    if (i != lines)
         return -3;
 
-    fprintf(fpout, "Part 1: %d\n", multivent(false, line, vent));
-    fprintf(fpout, "Part 2: %d\n", multivent(true, line, vent));
+    fprintf(fpout, "Part 1: %d\n", multivent(false, line, lines, vent));
+    fprintf(fpout, "Part 2: %d\n", multivent(true, line, lines, vent));
 
+    free(line);
     fclose(fpin);
     if (argc > 2)
         fclose(fpout);
     return 0;
 }
 
-
-int multivent(bool diag, Line* line, int vent[][DIM])
+int calcFileLength(FILE *fp)
 {
-    for (int i = 0; i < LINES; ++i) {
+    char buff[BUFSIZ];
+    int ret = 0;
+    char *tmp;
+
+    fseek(fp, 0, SEEK_SET);
+    tmp = fgets(buff, BUFSIZ, fp);
+    while (tmp != NULL)
+    {
+        ret++;
+        tmp = fgets(buff, BUFSIZ, fp);
+    }
+    return ret;
+}
+
+int multivent(bool diag, Line* line, int lines, int vent[][DIM])
+{
+    for (int i = 0; i < lines; ++i) {
         if (diag == line[i].diag) {
             int x = line[i].x0;
             int y = line[i].y0;
