@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv)
 {
-
+    int start = clock();
     Elements sum;
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
@@ -46,6 +46,9 @@ int main(int argc, char** argv)
     fillElementsSum(fpin, &sum);
     
     fprintf(fpout, "Res = %d", SumToInt(&sum, 1) * SumToInt(&sum, 0));
+
+    int end = clock();
+    fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
 
     fclose(fpin);
     if (argc > 2)

@@ -4,7 +4,7 @@ FILE* fpin, * fpout;
 
 int main(int argc, char** argv)
 {
-
+    int start = clock();
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
      * when argc is 1 then no arguments passed, 2 is one arg and so on
@@ -68,6 +68,10 @@ int main(int argc, char** argv)
     fprintf(fpout, "res1: %d, res2: %d\nRES: %d", res1, res2, res1 * res2);
 
     free(numArray);
+
+    int end = clock();
+    fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
+    
     fclose(fpin);
     if (argc > 2)
         fclose(fpout);

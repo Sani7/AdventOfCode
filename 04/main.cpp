@@ -2,6 +2,7 @@
 
 int main(int argc, char **argv)
 {
+    int start = clock();
     FILE *fpin, *fpout;
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
@@ -122,6 +123,9 @@ int main(int argc, char **argv)
         }
     }
     
+    int end = clock();
+    fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
+
     fclose(fpin);
     if (argc > 2)
         fclose(fpout);
