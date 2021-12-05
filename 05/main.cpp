@@ -50,7 +50,7 @@ int main(int argc, char** argv)
         line[i++] = (Line){x0, y0, x1, y1, dx, dy, dx && dy};
     }
     if (i != LINES)
-        return 2;
+        return -3;
 
     fprintf(fpout, "Part 1: %d\n", multivent(false, line, vent));
     fprintf(fpout, "Part 2: %d\n", multivent(true, line, vent));
