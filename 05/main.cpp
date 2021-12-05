@@ -39,12 +39,14 @@ int main(int argc, char** argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
+
     int lines = calcFileLength(fpin);
     fprintf(fpout, "lines: %d\n", lines);
     Line* line = (Line*)calloc(lines, sizeof(Line));
     //Line line[LINES] = {0};
     int vent[DIM][DIM] = {0};
 
+    // calcFileLength goes trough the whole file so we have to reset it to the beginning
     fseek(fpin, 0, SEEK_SET);
 
     int i = 0, x0, y0, x1, y1, dx, dy;
@@ -76,6 +78,7 @@ int calcFileLength(FILE *fp)
     int ret = 0;
     char *tmp;
 
+    // Set the file pointer to a known state
     fseek(fp, 0, SEEK_SET);
     tmp = fgets(buff, BUFSIZ, fp);
     while (tmp != NULL)
