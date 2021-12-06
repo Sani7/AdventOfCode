@@ -1,3 +1,3 @@
 #!/bin/bash
 
-g++ main.cpp ../libs/quicksort/quickSort.cpp -o main.o && ./main.o
+g++ main.cpp ../../libs/quickSort/quickSort.cpp -o main.o && ./main.o

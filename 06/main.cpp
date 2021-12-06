@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    int start = clock();
+    //int start = clock();
 
     FILE *fpin, *fpout;
     /* 
@@ -53,8 +53,8 @@ int main(int argc, char **argv)
     fprintf(fpout, "Part 1: %llu\n", live(pop, 0, DAYS1));
     fprintf(fpout, "Part 2: %llu\n", live(pop, DAYS1 % LIFE, DAYS2 - DAYS1));
 
-    int end = clock();
-    fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start) * 1000 / CLOCKS_PER_SEC);
+    //int end = clock();
+    //fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start) / CLOCKS_PER_SEC * 1000);
 
     fclose(fpin);
     if (argc > 2)

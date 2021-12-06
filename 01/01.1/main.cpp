@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv)
 {
-    int start = clock();
+    //int start = clock();
 
     FILE* fpin, * fpout;
     /* 
@@ -67,8 +67,8 @@ int main(int argc, char** argv)
     
     free(numArray);
 
-    int end = clock();
-    fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
+    //int end = clock();
+    //fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
 
     fclose(fpin);
     if (argc > 2)
