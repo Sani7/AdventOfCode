@@ -1,11 +1,10 @@
 #include "main.hpp"
 
-    FILE* fpin, * fpout;
+FILE* fpin, * fpout;
 
 int main(int argc, char** argv)
 {
     int start = clock();
-    Elements sum;
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
      * when argc is 1 then no arguments passed, 2 is one arg and so on
@@ -43,9 +42,12 @@ int main(int argc, char** argv)
         exit(-1);
     }
 
-    fillElementsSum(fpin, &sum);
+    int len = calcFileLength(fpin);
+    int *numArray = (int *)malloc(len * sizeof(int));
     
-    fprintf(fpout, "Res = %d", SumToInt(&sum, 1) * SumToInt(&sum, 0));
+    readFile(fpin, numArray, len);
+    
+    fprintf(fpout, "Res = %d\n", SumToInt(numArray, len, 1) * SumToInt(numArray, len, 0));
 
     int end = clock();
     fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
@@ -72,34 +74,22 @@ int calcFileLength(FILE* fp)
     return ret;
 }
 
-int fillElementsSum(FILE* fp, Elements* list)
+void readFile(FILE* in, int* out, int len)
 {
-    char buff[BUFSIZ];
-    char * again;
-    int len;
-    fseek(fp, 0, SEEK_SET);
-
-    again = fgets(buff, BUFSIZ, fp);
-    while (again != NULL)
+    char tmp[BUFSIZ];
+    fseek(fpin, 0, SEEK_SET);
+    for (int i = 0; i < len; i++)
     {
-        for (int i = 0; i < 12; i++)
-        {
-            if (buff[i] == '0')
-                list->E[i].zeros++;
-            else
-                list->E[i].ones++;
-            fprintf(fpout, "i: %d 1:%d 0:%d\n", i, list->E[i].ones, list->E[i].zeros);
-        }
-        again = fgets(buff, BUFSIZ, fp);
+        fgets(tmp, BUFSIZ, fpin);
+        out[i] = strToInt(tmp);
     }
-    return 0;
 }
 
 int strToInt(char * str)
 {
     int i = 0, res = 0;
 
-    while (str[i] != '\0')
+    while (str[i] != '\0' && str[i] != '\n')
     {
         res = res << 1;
         if (str[i] == '1')
@@ -109,7 +99,31 @@ int strToInt(char * str)
     return res;
 }
 
-int SumToInt(Elements* list, int alpha)
+int mostCommonBit(int* num, int len, int bit)
+{
+    int zero = 0, one = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if (num[i] == -1);
+            //fprintf(fpout, "%d is -1\n", i);
+        else if ((num[i] >> bit) & 0b1)
+            one++;
+        else
+            zero++;
+    }
+    fprintf(fpout, "zero: %d, one: %d\n", zero, one);
+    if (one == 1 && zero == 0)
+        return 0;
+    if (zero == 1 && one == 0)
+    return 1;
+    if (zero < one)
+        return 1;
+    if (zero == one)
+        return 1;
+    return 0;
+}
+
+int SumToInt(int* list, int len, int alpha)
 {
     int res = 0;
     if (alpha)
@@ -117,11 +131,11 @@ int SumToInt(Elements* list, int alpha)
         for (int i = 0; i < 12; i++)
         {
             res = res << 1;
-            if (list->E[i].ones > list->E[i].zeros)
+            if (mostCommonBit(list, len, 11 - i))
             {
                 res++;
             }
-            fprintf(fpout, "ones: %d, zeros: %dres: %d\n",list->E[i].ones, list->E[i].zeros, res);
+            fprintf(fpout, "res: %d\n", res);
         }
     }
     else
@@ -129,7 +143,7 @@ int SumToInt(Elements* list, int alpha)
         for (int i = 0; i < 12; i++)
         {
             res = res << 1;
-            if (list->E[i].ones < list->E[i].zeros)
+            if (!mostCommonBit(list, len, 11 - i))
             {
                 res++;
             }

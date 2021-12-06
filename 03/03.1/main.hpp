@@ -6,19 +6,9 @@
 
 #include "../../libs/quickSort/quickSort.hpp"
 
-typedef struct
-{
-    int zeros = 0;
-    int ones = 0;
-}Element;
-
-typedef struct
-{
-    Element E[12];
-} Elements;
-
 int calcFileLength(FILE* fp);
 
-int fillElementsSum(FILE* fp, Elements* list);
+void readFile(FILE* in, int* out, int len);
 int strToInt(char * str);
-int SumToInt(Elements* list, int alpha);
+int mostCommonBit(int* num, int len, int bit);
+int SumToInt(int* list, int len, int alpha);
