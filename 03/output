@@ -1,4 +1,29 @@
 zero: 508, one: 492
+zero: 489, one: 511
+zero: 493, one: 507
+zero: 479, one: 521
+zero: 512, one: 488
+zero: 498, one: 502
+zero: 490, one: 510
+zero: 472, one: 528
+zero: 488, one: 512
+zero: 491, one: 509
+zero: 508, one: 492
+zero: 512, one: 488
+zero: 508, one: 492
+zero: 489, one: 511
+zero: 493, one: 507
+zero: 479, one: 521
+zero: 512, one: 488
+zero: 498, one: 502
+zero: 490, one: 510
+zero: 472, one: 528
+zero: 488, one: 512
+zero: 491, one: 509
+zero: 508, one: 492
+zero: 512, one: 488
+Part 1: 4174964
+zero: 508, one: 492
 6 is set to -1
 9 is set to -1
 10 is set to -1
@@ -2023,5 +2048,4 @@ zero: 1, one: 0
 zero: 1, one: 0
 zero: 1, one: 0
 ret: 3264
-res1: 1371, res2: 3264
-RES: 4474944
+Part2: 4474944

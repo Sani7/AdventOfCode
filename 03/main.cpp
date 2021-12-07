@@ -1,9 +1,8 @@
 #include "main.hpp"
 
-FILE* fpin, * fpout;
-
 int main(int argc, char** argv)
 {
+    FILE* fpin, * fpout;
     //int start = clock();
     /* 
      * Use 1 or 2 cmd arguments as file name to use for input and output
@@ -47,11 +46,30 @@ int main(int argc, char** argv)
     
     readFile(fpin, numArray, len);
     
-    fprintf(fpout, "Res = %d\n", SumToInt(numArray, len, 1) * SumToInt(numArray, len, 0));
+    fprintf(fpout, "Part 1: %d\n", SumToInt(numArray, len, 1) * SumToInt(numArray, len, 0));
+
+    for (int i = 0; i < 12; i++)
+    {
+        clearNum(numArray, len, !mostCommonBit(numArray, len, 11 - i), 11 - i);
+    }
+    int res1 = printNum(numArray, len), res2;
+
+    readFile(fpin, numArray, len);
+
+    for (int i = 0; i < 12; i++)
+    {
+        clearNum(numArray, len, mostCommonBit(numArray, len, 11 - i), 11 - i);
+    }
+
+    res2 = printNum(numArray, len);
+    
+    fprintf(fpout, "Part 2: %d\n", res1 * res2);
+
+    free(numArray);
 
     //int end = clock();
     //fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start)*1000/CLOCKS_PER_SEC);
-
+    
     fclose(fpin);
     if (argc > 2)
         fclose(fpout);
@@ -77,10 +95,10 @@ int calcFileLength(FILE* fp)
 void readFile(FILE* in, int* out, int len)
 {
     char tmp[BUFSIZ];
-    fseek(fpin, 0, SEEK_SET);
+    fseek(in, 0, SEEK_SET);
     for (int i = 0; i < len; i++)
     {
-        fgets(tmp, BUFSIZ, fpin);
+        fgets(tmp, BUFSIZ, in);
         out[i] = strToInt(tmp);
     }
 }
@@ -105,13 +123,11 @@ int mostCommonBit(int* num, int len, int bit)
     for (int i = 0; i < len; i++)
     {
         if (num[i] == -1);
-            //fprintf(fpout, "%d is -1\n", i);
         else if ((num[i] >> bit) & 0b1)
             one++;
         else
             zero++;
     }
-    fprintf(fpout, "zero: %d, one: %d\n", zero, one);
     if (one == 1 && zero == 0)
         return 0;
     if (zero == 1 && one == 0)
@@ -123,33 +139,38 @@ int mostCommonBit(int* num, int len, int bit)
     return 0;
 }
 
+void clearNum(int* num, int len, int state, int bit)
+{
+    for (int i = 0; i < len; i++)
+    {
+        if (((num[i] >> bit & 0b1) == state) && num[i] != -1)
+            {
+                num[i] = -1;
+            }
+    }
+}
+
+int printNum(int* num, int len)
+{
+    for (int i = 0; i < len; i++)
+    
+        if (num[i] != -1)
+        {
+            return num[i];
+        }
+    return -1;
+}
+
 int SumToInt(int* list, int len, int alpha)
 {
     int res = 0;
-    if (alpha)
-    {
         for (int i = 0; i < 12; i++)
         {
             res = res << 1;
-            if (mostCommonBit(list, len, 11 - i))
+            if (alpha ? mostCommonBit(list, len, 11 - i) : !mostCommonBit(list, len, 11 - i))
             {
                 res++;
             }
-            fprintf(fpout, "res: %d\n", res);
-        }
     }
-    else
-    {
-        for (int i = 0; i < 12; i++)
-        {
-            res = res << 1;
-            if (!mostCommonBit(list, len, 11 - i))
-            {
-                res++;
-            }
-            fprintf(fpout, "res: %d\n", res);
-        }
-    }
-    fprintf(fpout, "%d\n", res);
     return res;
 }
