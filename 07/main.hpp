@@ -13,3 +13,4 @@
 int nCount(FILE* fp);
 int residualsum(int target, int* data, int len);
 int residualexp(int target, int* data, int len);
+int cmp(const void *a, const void *b);

@@ -50,37 +50,18 @@ int main(int argc, char **argv)
         fgetc(fpin);
     }
 
-    int target = 0;
+    // Linear cost => take median
+    // N is even, so N/2 is good (N/2-1 will be the same)
+    qsort(data, len, sizeof(int), cmp);
+    printf("Part 1: %d\n", residualsum(data[len/2], data, len));
+
+    // Quadratic cost => take mean
+    // Could go 0 either way because of rounding, but this happens to work for me
+    int mean = 1;
     for (int i = 0; i < len; ++i)
-        target += data[i];
-    target = (target + len/2) / len;
-
-    int dir = 1;
-    int res = residualsum(target, data, len), next = residualsum(target + dir, data, len);
-    if (next >= res) {
-        dir *= -1;
-        next = residualsum(target + dir, data, len);
-    }
-    while (next < res) {
-        target += dir;
-        res = next;
-        next = residualsum(target + dir, data, len);
-    }
-    printf("Part 1: %d\n", res);
-
-    dir = 1;
-    res = residualexp(target, data, len);
-    next = residualexp(target + dir, data, len);
-    if (next >= res) {
-        dir *= -1;
-        next = residualexp(target + dir, data, len);
-    }
-    while (next < res) {
-        target += dir;
-        res = next;
-        next = residualexp(target + dir, data, len);
-    }
-    printf("Part 2: %d\n", res);
+        mean += data[i];
+    mean /= len;
+    printf("Part 2: %d\n", residualexp(mean, data, len));
 
     //int end = clock();
     //fprintf(fpout, "The code took %d ticks to execute\nAnd equals to %.3f milliseconds\n", end - start, ((float)end - start) / CLOCKS_PER_SEC * 1000);
@@ -118,4 +99,11 @@ int residualexp(int target, int* data, int len)
         rs += (d & 1) ? d2 * d + d : d2 * d + d2;
     }
     return rs;
+}
+
+int cmp(const void *a, const void *b)
+{
+    int p = *(const int*)a;
+    int q = *(const int*)b;
+    return (q < p) - (p < q);
 }
