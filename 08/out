@@ -1,82 +1,72 @@
 be bde bceg cdefg bcdef abcdf bcdefg acdefg abdefg abcdefg 
 be bde bceg abcdf cdefg bcdef bcdefg acdefg abdefg abcdefg 
 be bde bceg abcdf cdefg bcdef acdefg abdefg bcdefg abcdefg 
-
-8
-3
-9
-4
+abcdefg: 8
+bcdef: 3
+bcdefg: 9
+bceg: 4
 cg bcg cefg bcdeg bdefg abcde abdefg abcdfg bcdefg abcdefg 
 cg bcg cefg abcde bdefg bcdeg abdefg abcdfg bcdefg abcdefg 
 cg bcg cefg abcde bdefg bcdeg abdefg abcdfg bcdefg abcdefg 
-
-9
-7
-8
-1
+bcdefg: 9
+bcg: 7
+abcdefg: 8
+cg: 1
 cg bcg acfg abcde abdfg abcdg abdefg abcdfg bcdefg abcdefg 
 cg bcg acfg abcde abdfg abcdg abdefg abcdfg bcdefg abcdefg 
 cg bcg acfg abcde abdfg abcdg abdefg bcdefg abcdfg abcdefg 
-
-1
-1
-9
-7
+cg: 1
+cg: 1
+abcdfg: 9
+bcg: 7
 bc bcd abcf abdeg acdef abcde bcdefg abcdef acdefg abcdefg 
 bc bcd abcf abdeg acdef abcde bcdefg abcdef acdefg abcdefg 
 bc bcd abcf abdeg acdef abcde acdefg bcdefg abcdef abcdefg 
-
-9
-3
-6
-1
+abcdef: 9
+abcde: 3
+acdefg: 6
+bc: 1
 fg bfg cefg abefg abdef abceg abcefg abcdeg abcdfg abcdefg 
 fg bfg cefg abdef abceg abefg abcefg abcdeg abcdfg abcdefg 
 fg bfg cefg abdef abceg abefg abcdeg abcdfg abcefg abcdefg 
-
-4
-8
-7
-3
+cefg: 4
+abcdefg: 8
+bfg: 7
+abefg: 3
 ac acf abce abefg bcdfg abcfg abcefg acdefg abdefg abcdefg 
 ac acf abce bcdfg abefg abcfg abcefg acdefg abdefg abcdefg 
 ac acf abce bcdfg abefg abcfg abdefg acdefg abcefg abcdefg 
-
-8
-4
-1
-8
+abcdefg: 8
+abce: 4
+ac: 1
+abcdefg: 8
 fg dfg cefg bcdfg bcdef abcdg abdefg abcdef bcdefg abcdefg 
 fg dfg cefg abcdg bcdef bcdfg abdefg abcdef bcdefg abcdefg 
 fg dfg cefg abcdg bcdef bcdfg abcdef abdefg bcdefg abcdefg 
-
-4
-5
-4
-8
+cefg: 4
+bcdef: 5
+cefg: 4
+abcdefg: 8
 de cde bdef bcefg abcdg bcdeg bcdefg abcefg acdefg abcdefg 
 de cde bdef abcdg bcefg bcdeg bcdefg abcefg acdefg abcdefg 
 de cde bdef abcdg bcefg bcdeg abcefg acdefg bcdefg abcdefg 
-
-1
-6
-2
-5
+de: 1
+abcefg: 6
+abcdg: 2
+bcefg: 5
 cg bcg cdeg abcef bdefg bcefg abdefg bcdefg abcdfg abcdefg 
 cg bcg cdeg abcef bdefg bcefg abdefg bcdefg abcdfg abcdefg 
 cg bcg cdeg abcef bdefg bcefg abdefg abcdfg bcdefg abcdefg 
-
-8
-7
-1
-7
+abcdefg: 8
+bcg: 7
+cg: 1
+bcg: 7
 fg cfg aefg abcfg abceg abcdf abcdeg abcefg bcdefg abcdefg 
 fg cfg aefg abcdf abceg abcfg abcdeg abcefg bcdefg abcdefg 
 fg cfg aefg abcdf abceg abcfg abcdeg bcdefg abcefg abcdefg 
-
-4
-3
-1
-5
+aefg: 4
+abcfg: 3
+fg: 1
+abceg: 5
 Part1: 26
 Part2: 61229

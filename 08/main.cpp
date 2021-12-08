@@ -86,8 +86,17 @@ int main(int argc, char **argv)
             errx(1, "missing separator");
 
         qsort(words, 10, sizeof(*words), cmp_len);
+        /*for (int i = 0; i < 10; i++)
+            fprintf(fpout, "%s ", words[i]);
+        fprintf(fpout, "\n");*/
         qsort(words + 3, 3, sizeof(*words), cmp_magic);
+        /*for (int i = 0; i < 10; i++)
+            fprintf(fpout, "%s ", words[i]);
+        fprintf(fpout, "\n");*/
         qsort(words + 6, 3, sizeof(*words), cmp_magic);
+        /*for (int i = 0; i < 10; i++)
+            fprintf(fpout, "%s ", words[i]);
+        fprintf(fpout, "\n");*/
 
         acc = 0;
         while ((word = strsep(&rest, " ")))
@@ -98,6 +107,7 @@ int main(int argc, char **argv)
             p1 += table[i] == 1 || table[i] == 4 ||
                   table[i] == 7 || table[i] == 8;
             acc = acc * 10 + table[i];
+            //fprintf(fpout, "%s: %d\n", word, table[i]);
         }
         p2 += acc;
     }
