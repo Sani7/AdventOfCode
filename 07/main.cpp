@@ -97,6 +97,10 @@ int residualexp(int target, int* data, int len)
     for (int i = 0; i < len; ++i) {
         int d = abs(data[i] - target), d2 = d >> 1;
         rs += (d & 1) ? d2 * d + d : d2 * d + d2;
+        // Or more clear and how the formula from Gauss is known
+        // but ever so slightly slower, for some reason:
+        // int n = abs(data[i] - target);
+        // cost += n * (n + 1) / 2;
     }
     return rs;
 }
