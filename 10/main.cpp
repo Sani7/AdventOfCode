@@ -50,7 +50,7 @@ int main(int argc, char **argv)
     int c, id, score = 0, syntaxerror = 0;
     size_t sp = 0, ip = 0;
 
-        while (!feof(fpin)) {
+    while (!feof(fpin)) {
         switch ((c = fgetc(fpin))) {
             case '(' : id = 0x01; break;
             case '[' : id = 0x02; break;
