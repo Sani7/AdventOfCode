@@ -2,8 +2,6 @@
 
 #define STACKSIZE 20  // 15 for my input
 #define INCSIZE   60  // 54 for my input
-int stack[STACKSIZE] = {0};
-int64_t incomplete[INCSIZE] = {0};
 
 int main(int argc, char **argv)
 {
@@ -45,6 +43,9 @@ int main(int argc, char **argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
+
+    int stack[STACKSIZE] = {0};
+    int64_t incomplete[INCSIZE] = {0};
 
     int c, id, score = 0, syntaxerror = 0;
     size_t sp = 0, ip = 0;
