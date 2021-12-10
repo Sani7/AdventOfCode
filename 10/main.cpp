@@ -72,7 +72,7 @@ int main(int argc, char **argv)
                         i = i * 5 + stack[--sp];      // pop opening bracket (value 1-4)
                     incomplete[ip++] = i;             // save incomplete score
                 } else {
-                    fprintf(stderr, "Incomplete-score stack overflow");
+                    fprintf(stderr, "Incomplete-score stack overflow\n Add more to INC Size\n");
                     return 1;
                 }
             }
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
             if (sp != STACKSIZE) {                    // room on the stack?
                 stack[sp++] = id;                     // push opening bracket (value 1-4)
             } else {
-                fprintf(stderr, "Bracket stack overflow");
+                fprintf(stderr, "Bracket stack overflow\nAdd more to stack size\n");
                 return 2;
             }
         } else if (id & 0xf0) {                       // closing bracket?
