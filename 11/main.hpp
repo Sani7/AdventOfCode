@@ -16,4 +16,3 @@
 #define DIM 10
 
 int cascade(int lum[DIM + 2][DIM + 2], bool flashed[DIM + 2][DIM + 2]);
-bool all(bool flashed[DIM + 2][DIM + 2]);
