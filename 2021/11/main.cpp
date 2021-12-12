@@ -103,12 +103,3 @@ int cascade(int lum[DIM + 2][DIM + 2], bool flashed[DIM + 2][DIM + 2])
             }
     return n;
 }
-
-bool all(bool flashed[DIM + 2][DIM + 2])
-{
-    for (int i = 1; i <= DIM; i++)
-        for (int j = 1; j <= DIM; j++)
-            if (!flashed[i][j])
-                return false;
-    return true;
-}
