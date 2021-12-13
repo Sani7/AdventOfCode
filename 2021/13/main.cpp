@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     }
 
     int result = 0;
-    int part = 0;
+    unsigned char part = 0;
     char buf[18], *bufp;
     char dots[1500][1500] = {0};
     int x, y, maxx = 0, maxy = 0, dir, crease;
@@ -66,15 +66,15 @@ int main(int argc, char **argv)
     maxy++;
     while (fgets(buf, 18, fpin) != NULL)
     {
-        bufp = strtok(buf, " ");
-        bufp = strtok(NULL, " ");
+        strtok(buf, " ");
+        strtok(NULL, " ");
         bufp = strtok(NULL, "=");
         if (*bufp == 'x')
             dir = 1;
         if (*bufp == 'y')
             dir = 0;
         bufp = strtok(NULL, " ");
-        crease = strtol(bufp, NULL, 10);
+        crease = atoi(bufp);
         for (int i = 0; (crease + i) < (dir == 0 ? maxy : maxx); i++)
             for (int j = 0; j < (dir == 1 ? maxy : maxx); j++)
                 if (dots[dir ? j : (crease + i)][dir ? (crease + i) : j])
