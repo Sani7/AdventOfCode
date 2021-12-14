@@ -13,4 +13,4 @@
 
 void count_template(const char* input, long* nb_pairs);
 void execute_step(long* nb_pairs, const int* insertions);
-void run(FILE* datafile, FILE* output, int nb_steps);
+void run(FILE* datafile, FILE* output, int nb_steps, int partNum);

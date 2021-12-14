@@ -49,9 +49,9 @@ int main(int argc, char **argv)
         exit(-1);
     }
 
-    run(fpin, fpout, 10);
+    run(fpin, fpout, 10, 1);
     fseek(fpin, 0, SEEK_SET);
-    run(fpin, fpout, 40);
+    run(fpin, fpout, 40, 2);
 
     fclose(fpin);
     if (argc > 2)
@@ -84,7 +84,7 @@ void execute_step(long* nb_pairs, const int* insertions)
     }
 }
 
-void run(FILE* datafile, FILE* output, int nb_steps)
+void run(FILE* datafile, FILE* output, int nb_steps, int partNum)
 {
     long nb_pairs[26 * 26]; // pairs in template
     char line[LINE_LENGTH];
@@ -127,8 +127,6 @@ void run(FILE* datafile, FILE* output, int nb_steps)
     }
 
     // print res
-   fprintf(output, "- finished in %d steps, "
-           "max %ld - min %ld = %ld\n",
-           nb_steps, max, min, max-min);
+   fprintf(output, "- Part %d: %ld\n", partNum, max-min);
 
 }
