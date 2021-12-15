@@ -50,7 +50,6 @@ int main(int argc, char **argv)
     }
 
     run(fpin, fpout, 10, 1);
-    fseek(fpin, 0, SEEK_SET);
     run(fpin, fpout, 40, 2);
 
     fclose(fpin);
@@ -89,6 +88,7 @@ void run(FILE* datafile, FILE* output, int nb_steps, int partNum)
     long nb_pairs[26 * 26]; // pairs in template
     char line[LINE_LENGTH];
 
+    fseek(datafile, 0, SEEK_SET);
     fgets(line, LINE_LENGTH, datafile);
     count_template(line, nb_pairs);
     int first = val(line[0]);
