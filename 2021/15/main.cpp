@@ -43,8 +43,8 @@ int main(int argc, char **argv)
         exit(-1);
     }
 
+    run(fpin, fpout, 0);
     run(fpin, fpout, 1);
-    run(fpin, fpout, 2);
     
 
     fclose(fpin);
@@ -68,8 +68,8 @@ void run(FILE* in, FILE* out, unsigned char part)
             spots[x][i][0] = (*(bufp++)) - 48;
         x++;
     }
-    end = (part == 1 ? SQUARE - 1 : SQUARE * 5 - 1);
-    if (part == 2)
+    end = (part == 0 ? SQUARE - 1 : SQUARE * 5 - 1);
+    if (part == 1)
         for (x = 0; x <= end; x++)
             for (y = 0; y <= end; y++)
             {
@@ -107,5 +107,5 @@ void run(FILE* in, FILE* out, unsigned char part)
                 }
             }
     }
-    fprintf(out, "%ld\n", spots[0][0][1] - spots[0][0][0]);
+    fprintf(out, "Part %d: %ld\n", part + 1, spots[0][0][1] - spots[0][0][0]);
 }
