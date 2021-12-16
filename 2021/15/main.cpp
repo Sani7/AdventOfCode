@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void run(FILE* in, FILE* out, unsigned char part)
+void run(FILE* in, FILE* out, bool part)
 {
     char buf[105], *bufp;
     int spots[SQUARE * 5][SQUARE * 5][2];

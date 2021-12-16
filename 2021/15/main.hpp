@@ -11,4 +11,4 @@
 
 #include "../libs/quickSort/quickSort.hpp"
 
-void run(FILE* in, FILE* out, unsigned char part);
+void run(FILE* in, FILE* out, bool part);
