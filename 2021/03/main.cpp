@@ -46,7 +46,7 @@ int main(int argc, char** argv)
     
     readFile(fpin, numArray, len);
     
-    fprintf(fpout, "Part 1: %d\n", SumToInt(numArray, len, 1) * SumToInt(numArray, len, 0));
+    fprintf(fpout, "3:\tPart 1: %d\t", SumToInt(numArray, len, 1) * SumToInt(numArray, len, 0));
 
     for (int i = 0; i < 12; i++)
     {

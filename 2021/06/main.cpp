@@ -50,7 +50,7 @@ int main(int argc, char **argv)
         c = fgetc(fpin);
     }
 
-    fprintf(fpout, "Part 1: %llu\n", live(pop, 0, DAYS1));
+    fprintf(fpout, "6\tPart 1: %llu\t", live(pop, 0, DAYS1));
     fprintf(fpout, "Part 2: %llu\n", live(pop, DAYS1 % LIFE, DAYS2 - DAYS1));
 
     //int end = clock();

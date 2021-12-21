@@ -92,7 +92,7 @@ int main(int argc, char **argv)
             part++;
         }
     }
-    fprintf(fpout, "Part 1: %d\n", result);
+    fprintf(fpout, "13:\tPart 1: %d\tPart 2:\n", result);
     for (y = 0; y < maxy; y++)
     {
         for (x = 0; x < maxx; x++)

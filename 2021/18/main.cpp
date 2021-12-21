@@ -68,7 +68,7 @@ int main(int argc, char **argv)
                 p2 = sc;
         }
 
-    fprintf(fpout, "Part 1: %d\nPart 2: %d\n", p1, p2);
+    fprintf(fpout, "18:\tPart 1: %d\tPart 2: %d\n", p1, p2);
 
     fclose(fpin);
     if (argc > 2)

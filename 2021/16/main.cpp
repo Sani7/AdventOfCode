@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     putchar('\n');
 #endif
 
-    fprintf(fpout, "Part 1: %d\nPart 2: %lld\n", sum_vers(root), eval(root));
+    fprintf(fpout, "16:\tPart 1: %d\tPart 2: %lld\n", sum_vers(root), eval(root));
 
     fclose(fpin);
     if (argc > 2)

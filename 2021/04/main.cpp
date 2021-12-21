@@ -105,13 +105,15 @@ int main(int argc, char **argv)
                             for (unsigned int k = 0; k < DIM; ++k)
                                 if (card[p->card][j][k] < DRAW)  // not crossed out?
                                     cardsum += card[p->card][j][k];
-                        fprintf(fpout, "Part %d: %u\n", 1 + (wins == DRAW), draw[i] * cardsum);
+                        fprintf(fpout, "Part %d: %u\t", 1 + (wins == DRAW), draw[i] * cardsum);
                     }
                 }
             }
             p = p->next;  // next entry in reverse index of number drawn
         }
     }
+
+    fprintf(fpout, "\n");
 
     // Free allocated memory
     for (i = 0; i < DRAW; ++i) {

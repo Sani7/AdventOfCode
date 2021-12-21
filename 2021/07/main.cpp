@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     // Linear cost => take median
     // N is even, so N/2 is good (N/2-1 will be the same)
     qsort(data, len, sizeof(int), cmp);
-    printf("Part 1: %d\n", residualsum(data[len/2], data, len));
+    printf("7:\tPart 1: %d\t", residualsum(data[len/2], data, len));
 
     // Quadratic cost => take mean
     // Could go 0 either way because of rounding, but this happens to work for me

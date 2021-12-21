@@ -80,8 +80,9 @@ int main(int argc, char **argv)
             qsort(basins, 300, sizeof(int), cmp);
             result = basins[299] * basins[298] * basins[297];
         }
-        fprintf(fpout, "Part %d: %lu\n", part + 1, result);
+        fprintf(fpout, "Part %d: %lu\t", part + 1, result);
     }
+    fprintf(fpout, "\n");
     fclose(fpin);
     if (argc > 2)
         fclose(fpout);

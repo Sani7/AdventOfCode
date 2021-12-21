@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     if (i != lines)
         return -3;
 
-    fprintf(fpout, "Part 1: %d\n", multivent(false, line, lines, vent));
+    fprintf(fpout, "5\tPart 1: %d\t", multivent(false, line, lines, vent));
     fprintf(fpout, "Part 2: %d\n", multivent(true, line, lines, vent));
 
     free(line);

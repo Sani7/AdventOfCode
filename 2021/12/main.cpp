@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     // DFS from start, every time an end is hit, +1 to path count. Backtrack properly.
     int pathCnt = 0;
     dfs(START_NODE, &pathCnt);
-    printf("Part 1: %d\n", pathCnt);
+    printf("12:\tPart 1: %d\t", pathCnt);
 
     pathCnt = 0;
     int wildcard = -1;

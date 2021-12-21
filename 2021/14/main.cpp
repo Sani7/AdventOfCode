@@ -48,9 +48,10 @@ int main(int argc, char **argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-
+    fprintf(fpout, "14:\t");
     run(fpin, fpout, 10, 1);
     run(fpin, fpout, 40, 2);
+    fprintf(fpout, "\n");
 
     fclose(fpin);
     if (argc > 2)
@@ -127,6 +128,6 @@ void run(FILE* datafile, FILE* output, int nb_steps, int partNum)
     }
 
     // print res
-   fprintf(output, "- Part %d: %ld\n", partNum, max-min);
+   fprintf(output, "Part %d: %ld\t", partNum, max-min);
 
 }

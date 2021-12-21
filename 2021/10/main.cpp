@@ -94,7 +94,7 @@ int main(int argc, char **argv)
     }
     qsort(incomplete, ip, sizeof *incomplete, asc);
 
-    fprintf(fpout, "Part 1: %d\n", syntaxerror);
+    fprintf(fpout, "10:\tPart 1: %d\t", syntaxerror);
     fprintf(fpout, "Part 2: %d\n", incomplete[ip/2]);
 
     fclose(fpin);

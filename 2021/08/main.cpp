@@ -112,7 +112,7 @@ int main(int argc, char **argv)
         p2 += acc;
     }
 
-    fprintf(fpout, "Part1: %d\nPart2: %d\n", p1, p2);
+    fprintf(fpout, "8:\tPart1: %d\tPart2: %d\n", p1, p2);
 
     fclose(fpin);
     if (argc > 2)

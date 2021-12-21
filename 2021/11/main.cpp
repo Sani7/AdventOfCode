@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         step++;
         total += cascade(lum, flashed);
     }
-    fprintf(fpout, "Part 1: %d\n", total);
+    fprintf(fpout, "11\tPart 1: %d\t", total);
     while (cascade(lum, flashed) != 100)
     {
         step++;

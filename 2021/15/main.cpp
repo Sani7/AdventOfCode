@@ -42,9 +42,10 @@ int main(int argc, char **argv)
         fprintf(stderr, "Not able to acces input file test\n");
         exit(-1);
     }
-
+    fprintf(fpout, "15:\t");
     run(fpin, fpout, 0);
     run(fpin, fpout, 1);
+    fprintf(fpout, "\n");
     
 
     fclose(fpin);
@@ -107,5 +108,5 @@ void run(FILE* in, FILE* out, bool part)
                 }
             }
     }
-    fprintf(out, "Part %d: %ld\n", part + 1, spots[0][0][1] - spots[0][0][0]);
+    fprintf(out, "Part %d: %ld\t", part + 1, spots[0][0][1] - spots[0][0][0]);
 }
